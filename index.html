@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- META TAG VIEWPORT: Esencial para el diseño responsivo -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Un Regalo para Kilee ✨</title>
     
@@ -51,6 +52,7 @@
             background-color: rgba(0,0,0,0.6);
             justify-content: center;
             align-items: center;
+            padding: 1rem; /* Añadido para evitar que el modal toque los bordes en pantallas pequeñas */
         }
         .custom-modal-content {
             background-color: #fff;
@@ -61,7 +63,7 @@
             box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
             text-align: center;
             position: relative;
-            width: 90%;
+            width: 100%; /* Ajustado para ser más flexible */
             max-width: 350px;
             border: 2px solid #e94560;
             animation: modal-pop 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -86,7 +88,7 @@
             box-shadow: 0 0 5px #e94560, 0 0 10px #e94560, 0 0 15px #e94560;
         }
 
-        /* CAMBIO: Asegura que el texto de las opciones del menú sea legible */
+        /* Asegura que el texto de las opciones del menú sea legible */
         select option {
             color: #1f2937; /* Un color oscuro para el texto */
             background-color: #ffffff; /* Fondo blanco para las opciones */
@@ -106,14 +108,16 @@
     </div>
 
     <!-- Contenido principal -->
-    <main class="container mx-auto px-6 py-12 relative z-10">
+    <!-- MEJORA RESPONSIVA: Se ajusta el padding horizontal para diferentes pantallas (px-4 sm:px-6) -->
+    <main class="container mx-auto px-4 sm:px-6 py-8 sm:py-12 relative z-10">
 
         <!-- Sección Principal: Generador de Afirmaciones Personalizado -->
-        <section class="text-center py-12 md:py-20">
-            <h1 class="font-title text-6xl md:text-8xl text-white mb-4" style="text-shadow: 0 0 15px #e94560;">
+        <section class="text-center py-12 md:py-16">
+            <!-- MEJORA RESPONSIVA: Se ajustan los tamaños de fuente para que escalen mejor -->
+            <h1 class="font-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-4" style="text-shadow: 0 0 15px #e94560;">
                 Para mi Kilee
             </h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Una pequeña dosis de amor y luz, solo para ti. Porque te mereces todo lo bonito del universo.</p>
+            <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10 max-w-3xl mx-auto">Una pequeña dosis de amor y luz, solo para ti. Porque te mereces todo lo bonito del universo.</p>
 
             <!-- Selector de Categoría -->
             <div class="mb-8 max-w-sm mx-auto">
@@ -124,27 +128,28 @@
             </div>
 
             <!-- Área de visualización de la afirmación -->
-            <div class="affirmation-display bg-white/10 backdrop-blur-md text-white p-8 md:p-10 rounded-xl shadow-2xl max-w-2xl mx-auto mb-8 relative border border-white/20 min-h-[150px] flex items-center justify-center">
-                <p id="current-affirmation" class="text-2xl md:text-3xl font-semibold italic">
+            <!-- MEJORA RESPONSIVA: Se ajusta el padding y la altura mínima -->
+            <div class="affirmation-display bg-white/10 backdrop-blur-md text-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-2xl mx-auto mb-8 relative border border-white/20 min-h-[160px] flex items-center justify-center">
+                <!-- MEJORA RESPONSIVA: Se ajustan los tamaños de fuente -->
+                <p id="current-affirmation" class="text-xl sm:text-2xl md:text-3xl font-semibold italic">
                     <!-- La afirmación se insertará aquí -->
                 </p>
                 <!-- Botón para copiar -->
-                <button id="copy-affirmation-btn" title="Copiar al portapapeles" class="absolute top-4 right-4 text-gray-300 hover:text-[#e94560] transition duration-300">
+                <button id="copy-affirmation-btn" title="Copiar al portapapeles" class="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-300 hover:text-[#e94560] transition duration-300">
                     <i class="fas fa-copy text-xl"></i>
                 </button>
             </div>
 
-            <!-- Botones de acción -->
+            <!-- Botones de acción (la clase flex-col sm:flex-row ya es responsiva) -->
             <div class="flex flex-col sm:flex-row justify-center items-center gap-5">
-                <button id="generate-affirmation-btn" class="bg-[#e94560] hover:bg-[#d43d51] text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 glowing-btn flex items-center justify-center gap-2 w-full sm:w-auto">
+                <button id="generate-affirmation-btn" class="bg-[#e94560] hover:bg-[#d43d51] text-white font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 glowing-btn flex items-center justify-center gap-2 w-full sm:w-auto text-base sm:text-lg">
                     Generar Mensaje <i class="fas fa-heart-pulse ml-2"></i>
                 </button>
                 <div class="flex space-x-4">
-                    <button id="share-whatsapp-btn" title="Compartir en WhatsApp" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-md transition duration-300 transform hover:scale-110">
+                    <button id="share-whatsapp-btn" title="Compartir en WhatsApp" class="bg-green-500 hover:bg-green-600 text-white p-3 sm:p-4 rounded-full shadow-md transition duration-300 transform hover:scale-110">
                         <i class="fab fa-whatsapp text-xl"></i>
                     </button>
-                    <!-- CAMBIO: Botón de Twitter reemplazado por Instagram -->
-                    <button id="share-instagram-btn" title="Compartir en Instagram" class="bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 text-white p-4 rounded-full shadow-md transition duration-300 transform hover:scale-110">
+                    <button id="share-instagram-btn" title="Compartir en Instagram" class="bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 text-white p-3 sm:p-4 rounded-full shadow-md transition duration-300 transform hover:scale-110">
                         <i class="fab fa-instagram text-xl"></i>
                     </button>
                 </div>
@@ -152,12 +157,14 @@
         </section>
 
         <!-- Sección de Mensaje Personal -->
-        <section class="py-16 text-center bg-white/5 backdrop-blur-sm rounded-xl shadow-lg mt-16 border border-white/10">
-            <h2 class="font-title text-5xl md:text-6xl text-white mb-6" style="text-shadow: 0 0 10px #e94560;">Unas palabras para ti</h2>
-            <div class="max-w-3xl mx-auto text-lg text-gray-300 space-y-4 px-6">
+        <section class="py-12 sm:py-16 text-center bg-white/5 backdrop-blur-sm rounded-xl shadow-lg mt-12 sm:mt-16 border border-white/10">
+            <!-- MEJORA RESPONSIVA: Se ajustan los tamaños de fuente -->
+            <h2 class="font-title text-4xl sm:text-5xl md:text-6xl text-white mb-6" style="text-shadow: 0 0 10px #e94560;">Unas palabras para ti</h2>
+            <!-- MEJORA RESPONSIVA: Se ajusta el padding horizontal -->
+            <div class="max-w-3xl mx-auto text-base sm:text-lg text-gray-300 space-y-4 px-4 sm:px-6">
                 <p>Kilee, mi amor. Quise crear este pequeño rincón en el universo digital solo para ti. Un lugar al que puedas venir siempre que necesites un recordatorio de lo increíble que eres y de lo mucho que te amo.</p>
                 <p>Cada palabra aquí está cargada con todo mi cariño. Eres mi inspiración, mi alegría y mi persona favorita en el mundo. Espero que esto te saque una sonrisa.</p>
-                <p class="font-semibold text-[#e94560] text-xl mt-6">Con todo mi amor, siempre.</p>
+                <p class="font-semibold text-[#e94560] text-lg sm:text-xl mt-6">Con todo mi amor, siempre.</p>
             </div>
         </section>
 
@@ -165,7 +172,7 @@
 
     <!-- Pie de página -->
     <footer class="text-center py-8 mt-12 relative z-10">
-        <p class="text-gray-400 text-sm">&copy; 2025 - Hecho con <i class="fas fa-heart text-[#e94560]"></i> exclusivamente para la mejor novia del mundo.</p>
+        <p class="text-gray-400 text-xs sm:text-sm">&copy; 2025 - Hecho con <i class="fas fa-heart text-[#e94560]"></i> exclusivamente para la mejor novia del mundo.</p>
     </footer>
 
     <!-- Script para la animación de partículas -->
@@ -197,18 +204,7 @@
             // Objeto con todas las afirmaciones
             const affirmationsByCategory = {
                 para_ti: [
-                    "Eres la persona más increíble que he conocido, Kilee.",
-                    "Tu sonrisa tiene el poder de iluminar mi día por completo.",
-                    "Amo cada pequeño detalle que te hace ser tú.",
-                    "Gracias por existir y por hacerme tan feliz.",
-                    "Kilee, eres más fuerte y valiente de lo que imaginas.",
-                    "Estoy tan orgulloso de la persona que eres.",
-                    "Contigo a mi lado, siento que puedo conquistar el mundo.",
-                    "Eres mi lugar seguro y mi aventura favorita, todo en uno.",
-                    "Tu inteligencia y tu corazón son simplemente deslumbrantes.",
-                    "No olvides nunca lo valiosa y maravillosa que eres.",
-                    "Cada día a tu lado es el mejor regalo.",
-                    "Te amo más de lo que las palabras pueden expresar."
+                    "Eres la persona más increíble que he conocido, Kilee.", "Tu sonrisa tiene el poder de iluminar mi día por completo.", "Amo cada pequeño detalle que te hace ser tú.", "Gracias por existir y por hacerme tan feliz.", "Kilee, eres más fuerte y valiente de lo que imaginas.", "Estoy tan orgulloso de la persona que eres.", "Contigo a mi lado, siento que puedo conquistar el mundo.", "Eres mi lugar seguro y mi aventura favorita, todo en uno.", "Tu inteligencia y tu corazón son simplemente deslumbrantes.", "No olvides nunca lo valiosa y maravillosa que eres.", "Cada día a tu lado es el mejor regalo.", "Te amo más de lo que las palabras pueden expresar."
                 ],
                 confianza: [
                     "Confío plenamente en mis habilidades y fortalezas.", "Soy segura de mí misma y de mis decisiones.", "Mi confianza crece con cada paso que doy.", "Soy digna de respeto y admiración.", "Me expreso con claridad y convicción.", "Creo en mi capacidad para superar cualquier obstáculo.",
@@ -240,9 +236,7 @@
             const categorySelector = document.getElementById('affirmation-category');
             const customModal = document.getElementById('customModal');
             const modalMessage = document.getElementById('modalMessage');
-            
             const shareWhatsappBtn = document.getElementById('share-whatsapp-btn');
-            // CAMBIO: Se selecciona el botón de Instagram
             const shareInstagramBtn = document.getElementById('share-instagram-btn');
 
             // --- FUNCIONES ---
@@ -264,7 +258,7 @@
                 customModal.style.display = 'flex';
                 setTimeout(() => {
                     hideModal();
-                }, 2500); // Un poco más de tiempo para leer el mensaje de Instagram
+                }, 2500);
             }
 
             function hideModal() {
@@ -283,7 +277,6 @@
                 affirmationElement.classList.add('fade-in-up');
             }
 
-            // CAMBIO: La función ahora acepta un mensaje personalizado para el modal
             function copyToClipboard(message = '¡Mensaje copiado! ❤️') {
                 const textToCopy = affirmationElement.textContent.replace(/"/g, '');
                 const tempInput = document.createElement('textarea');
@@ -299,7 +292,6 @@
                 document.body.removeChild(tempInput);
             }
             
-            // CAMBIO: La función ahora maneja Instagram
             function shareOn(platform) {
                 const text = affirmationElement.textContent.replace(/"/g, '');
                 const encodedText = encodeURIComponent(text + " ✨");
@@ -308,8 +300,6 @@
                     const url = `https://api.whatsapp.com/send?text=${encodedText}`;
                     window.open(url, '_blank');
                 } else if (platform === 'instagram') {
-                    // Instagram no permite compartir texto directamente.
-                    // Así que copiamos el texto y le mostramos una instrucción.
                     copyToClipboard('Mensaje copiado. ¡Ahora pégalo en tu publicación de Instagram!');
                 }
             }
@@ -318,11 +308,8 @@
             
             generateBtn.addEventListener('click', generateNewAffirmation);
             categorySelector.addEventListener('change', generateNewAffirmation);
-            // CAMBIO: El botón de copiar ahora llama a la función sin argumentos
             copyBtn.addEventListener('click', () => copyToClipboard());
-            
             shareWhatsappBtn.addEventListener('click', () => shareOn('whatsapp'));
-            // CAMBIO: El listener ahora es para el botón de Instagram
             shareInstagramBtn.addEventListener('click', () => shareOn('instagram'));
 
             window.addEventListener('click', (event) => {
@@ -338,3 +325,4 @@
     </script>
 </body>
 </html>
+
