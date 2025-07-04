@@ -3,442 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Dosis Diaria de Inspiración - Generador de Afirmaciones Positivas</title>
-    <!-- Incluye Tailwind CSS desde CDN para un diseño moderno y responsivo -->
+    <title>Un Regalo para Kilee ✨</title>
+    
+    <!-- Tailwind CSS para el diseño -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuración de Tailwind para usar el tema por defecto y la fuente Inter -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#6B46C1', // Un púrpura inspirador
-                        secondary: '#4A5568', // Gris oscuro para texto y elementos secundarios
-                        accent: '#38A169', // Verde para acciones destacadas
-                        background: '#F7FAFC', // Fondo muy claro
-                        text: '#2D3748', // Color de texto principal
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Enlace a Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Fuente Inter de Google Fonts para una tipografía legible y moderna -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Fuentes de Google: 'Great Vibes' para títulos y 'Poppins' para el cuerpo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Asegura que la fuente Inter se aplique globalmente al cuerpo del documento */
+        /* Aplicamos las fuentes personalizadas */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a2e; /* Fondo oscuro para el efecto de estrellas */
         }
-        /* Estilos base para los modales (pop-ups), ocultos por defecto */
+        .font-title {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Contenedor para el fondo animado */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Detrás de todo el contenido */
+            background-color: #1a1a2e;
+            background-image: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460);
+        }
+
+        /* Estilos del modal de notificación */
         .custom-modal {
-            display: none; /* Oculto por defecto, controlado por JavaScript */
-            position: fixed; /* Fijo en la ventana del navegador */
-            z-index: 9999; /* Asegura que esté por encima de otros elementos */
+            display: none;
+            position: fixed;
+            z-index: 9999;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; /* Permite desplazamiento si el contenido es grande */
-            background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
-            justify-content: center; /* Centra el contenido horizontalmente */
-            align-items: center; /* Centra el contenido verticalmente */
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
         }
-        /* Estilos para el contenido dentro de los modales */
         .custom-modal-content {
-            background-color: #fefefe;
-            margin: auto; /* Centra el modal en la pantalla */
-            padding: 20px;
-            border-radius: 8px; /* Esquinas redondeadas */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra sutil */
-            text-align: center; /* Centra el texto */
-            position: relative; /* Para posicionar el botón de cierre */
-            width: 90%; /* Ancho responsivo */
-            max-width: 400px; /* Ancho máximo para evitar que sea demasiado grande */
+            background-color: #fff;
+            color: #333;
+            margin: auto;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            width: 90%;
+            max-width: 350px;
+            border: 2px solid #e94560;
+            animation: modal-pop 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
-        /* Estilos para el botón de cierre de los modales */
-        .custom-modal-close {
-            color: #aaa;
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer; /* Indica que es clickeable */
+        
+        @keyframes modal-pop {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
-        .custom-modal-close:hover,
-        .custom-modal-close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+
+        /* Animación para la aparición de la afirmación */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-in-out;
         }
-        /* Animación para la afirmación */
-        .fade-in {
-            animation: fadeIn 0.8s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilo de los botones con un brillo sutil */
+        .glowing-btn {
+            box-shadow: 0 0 5px #e94560, 0 0 10px #e94560, 0 0 15px #e94560;
+        }
+
+        /* CAMBIO: Asegura que el texto de las opciones del menú sea legible */
+        select option {
+            color: #1f2937; /* Un color oscuro para el texto */
+            background-color: #ffffff; /* Fondo blanco para las opciones */
         }
     </style>
 </head>
-<body class="font-inter bg-background text-text leading-relaxed">
+<body class="text-gray-200 leading-relaxed">
 
-    <!-- Modal personalizado para mensajes de notificación (ej. "Afirmación copiada!") -->
+    <!-- Fondo de partículas animado -->
+    <div id="particles-js"></div>
+
+    <!-- Modal personalizado para notificaciones -->
     <div id="customModal" class="custom-modal">
         <div class="custom-modal-content">
-            <span class="custom-modal-close">&times;</span>
-            <p id="modalMessage" class="text-lg font-semibold"></p>
+            <p id="modalMessage" class="text-lg font-semibold text-gray-800"></p>
         </div>
     </div>
 
-    <!-- Encabezado principal de la página: Contiene logo, título y navegación -->
-    <header class="bg-white shadow-md py-4 px-6 md:px-8 lg:px-10 sticky top-0 z-50">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <!-- Logo y título del sitio -->
-            <a href="/" class="flex items-center space-x-2">
-                <i class="fas fa-lightbulb text-primary text-2xl"></i>
-                <span class="text-2xl font-bold text-text">Inspiración Diaria</span>
-            </a>
+    <!-- Contenido principal -->
+    <main class="container mx-auto px-6 py-12 relative z-10">
 
-            <!-- Navegación principal del sitio -->
-            <nav class="flex-grow flex justify-center md:justify-start md:ml-8">
-                <ul class="flex flex-wrap justify-center space-x-4 sm:space-x-6">
-                    <li><a href="#about-affirmations" class="text-secondary hover:text-primary font-semibold transition duration-300">Sobre las Afirmaciones</a></li>
-                    <li><a href="#contact" class="text-secondary hover:text-primary font-semibold transition duration-300">Contacto</a></li>
-                </ul>
-            </nav>
+        <!-- Sección Principal: Generador de Afirmaciones Personalizado -->
+        <section class="text-center py-12 md:py-20">
+            <h1 class="font-title text-6xl md:text-8xl text-white mb-4" style="text-shadow: 0 0 15px #e94560;">
+                Para mi Kilee
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Una pequeña dosis de amor y luz, solo para ti. Porque te mereces todo lo bonito del universo.</p>
 
-            <!-- Espacio publicitario: Banner superior derecho. Ideal para Google AdSense. -->
-            <div class="ad-slot bg-gray-200 flex items-center justify-center rounded-lg overflow-hidden w-full md:w-[728px] h-[90px] md:h-[90px] text-sm text-gray-500">
-                <p>Anuncio: Banner Superior (728x90)</p>
-                <!-- Aquí se insertaría el código real de Google AdSense -->
-                <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-                <!-- <ins class="adsbygoogle"
-                     style="display:inline-block;width:728px;height:90px"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXX"
-                     data-ad-slot="XXXXXXXXX"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
-            </div>
-        </div>
-    </header>
-
-    <!-- Contenido principal de la página -->
-    <main class="container mx-auto px-6 md:px-8 lg:px-10 py-12">
-
-        <!-- Sección Principal: Generador de Afirmaciones -->
-        <section class="affirmation-generator bg-gradient-to-br from-purple-500 to-indigo-600 text-white text-center py-20 rounded-lg shadow-xl mb-12">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Tu Dosis Diaria de Inspiración</h1>
-            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto">Recibe una afirmación positiva para empezar tu día con la mejor energía.</p>
-
-            <!-- Selector de Categoría de Afirmación -->
-            <div class="mb-8 max-w-xs mx-auto">
-                <label for="affirmation-category" class="block text-white text-lg font-semibold mb-2">Elige tu enfoque:</label>
-                <select id="affirmation-category" class="w-full p-3 rounded-md bg-white text-text shadow-md focus:ring-primary focus:border-primary">
-                    <option value="general">General</option>
-                    <option value="confianza">Confianza</option>
-                    <option value="bienestar">Bienestar</option>
-                    <option value="exito">Éxito</option>
-                    <option value="amor">Amor</option>
+            <!-- Selector de Categoría -->
+            <div class="mb-8 max-w-sm mx-auto">
+                <label for="affirmation-category" class="block text-white text-lg font-semibold mb-2">Elige un tipo de mensaje:</label>
+                <select id="affirmation-category" class="w-full p-3 rounded-lg bg-white/20 backdrop-blur-sm text-white border border-white/30 shadow-lg focus:ring-2 focus:ring-[#e94560] focus:outline-none">
+                    <!-- Categorías de afirmaciones se insertan aquí con JS -->
                 </select>
             </div>
 
             <!-- Área de visualización de la afirmación -->
-            <div class="affirmation-display bg-white text-text p-8 md:p-10 rounded-lg shadow-2xl max-w-2xl mx-auto mb-8 relative">
+            <div class="affirmation-display bg-white/10 backdrop-blur-md text-white p-8 md:p-10 rounded-xl shadow-2xl max-w-2xl mx-auto mb-8 relative border border-white/20 min-h-[150px] flex items-center justify-center">
                 <p id="current-affirmation" class="text-2xl md:text-3xl font-semibold italic">
-                    "Soy capaz de lograr todo lo que me propongo."
+                    <!-- La afirmación se insertará aquí -->
                 </p>
-                <!-- Botón para copiar la afirmación -->
-                <button id="copy-affirmation-btn" class="absolute top-3 right-3 text-gray-400 hover:text-primary transition duration-300">
+                <!-- Botón para copiar -->
+                <button id="copy-affirmation-btn" title="Copiar al portapapeles" class="absolute top-4 right-4 text-gray-300 hover:text-[#e94560] transition duration-300">
                     <i class="fas fa-copy text-xl"></i>
                 </button>
             </div>
 
-            <!-- Botones de acción: Generar y Compartir -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <button id="generate-affirmation-btn" class="bg-accent hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 flex items-center justify-center gap-2 w-full sm:w-auto">
-                    Generar Nueva Afirmación <i class="fas fa-redo ml-2"></i>
+            <!-- Botones de acción -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-5">
+                <button id="generate-affirmation-btn" class="bg-[#e94560] hover:bg-[#d43d51] text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 glowing-btn flex items-center justify-center gap-2 w-full sm:w-auto">
+                    Generar Mensaje <i class="fas fa-heart-pulse ml-2"></i>
                 </button>
-                <div class="flex space-x-3">
-                    <button id="share-twitter-btn" class="bg-blue-400 hover:bg-blue-500 text-white p-3 rounded-full shadow-md transition duration-300 transform hover:scale-110">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </button>
-                    <button id="share-facebook-btn" class="bg-blue-700 hover:bg-blue-800 text-white p-3 rounded-full shadow-md transition duration-300 transform hover:scale-110">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                    </button>
-                    <button id="share-whatsapp-btn" class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-md transition duration-300 transform hover:scale-110">
+                <div class="flex space-x-4">
+                    <button id="share-whatsapp-btn" title="Compartir en WhatsApp" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-md transition duration-300 transform hover:scale-110">
                         <i class="fab fa-whatsapp text-xl"></i>
                     </button>
+                    <!-- CAMBIO: Botón de Twitter reemplazado por Instagram -->
+                    <button id="share-instagram-btn" title="Compartir en Instagram" class="bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 text-white p-4 rounded-full shadow-md transition duration-300 transform hover:scale-110">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Espacio publicitario: Anuncio Nativo (simulado) - Integrado cerca del contenido principal -->
-        <section class="ad-section py-8 text-center">
-            <div class="ad-slot bg-gray-100 p-6 rounded-lg shadow-md border-l-4 border-accent text-sm text-gray-600 max-w-2xl mx-auto">
-                <p class="font-semibold mb-2">Anuncio Patrocinado: Mejora tu Bienestar</p>
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <img src="https://placehold.co/100x100/A0A0A0/FFFFFF?text=Ad+Wellness" alt="Anuncio Bienestar" class="rounded-md">
-                    <div>
-                        <h4 class="font-bold text-text">Descubre cursos de meditación y mindfulness</h4>
-                        <p>Empieza tu camino hacia una vida más plena hoy mismo.</p>
-                        <a href="#" class="text-accent hover:underline text-sm mt-2 block">Más Información <i class="fas fa-external-link-alt ml-1"></i></a>
-                    </div>
-                </div>
-                <!-- Aquí se insertaría el código real de Google AdSense para un anuncio in-feed o nativo -->
+        <!-- Sección de Mensaje Personal -->
+        <section class="py-16 text-center bg-white/5 backdrop-blur-sm rounded-xl shadow-lg mt-16 border border-white/10">
+            <h2 class="font-title text-5xl md:text-6xl text-white mb-6" style="text-shadow: 0 0 10px #e94560;">Unas palabras para ti</h2>
+            <div class="max-w-3xl mx-auto text-lg text-gray-300 space-y-4 px-6">
+                <p>Kilee, mi amor. Quise crear este pequeño rincón en el universo digital solo para ti. Un lugar al que puedas venir siempre que necesites un recordatorio de lo increíble que eres y de lo mucho que te amo.</p>
+                <p>Cada palabra aquí está cargada con todo mi cariño. Eres mi inspiración, mi alegría y mi persona favorita en el mundo. Espero que esto te saque una sonrisa.</p>
+                <p class="font-semibold text-[#e94560] text-xl mt-6">Con todo mi amor, siempre.</p>
             </div>
-        </section>
-
-        <!-- Sección "Sobre las Afirmaciones" -->
-        <section id="about-affirmations" class="py-12 text-center bg-white rounded-lg shadow-lg mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-text mb-8">¿Qué son las Afirmaciones Positivas?</h2>
-            <div class="max-w-3xl mx-auto text-lg text-gray-700 space-y-4">
-                <p>Las afirmaciones positivas son declaraciones cortas y poderosas que, al repetirse con convicción, pueden influir en nuestra mente subconsciente y cambiar patrones de pensamiento negativos por positivos. Son una herramienta sencilla pero efectiva para fomentar la confianza, la motivación y el bienestar general.</p>
-                <p>Al practicar afirmaciones regularmente, puedes reprogramar tu cerebro para enfocarse en tus fortalezas, atraer oportunidades y mantener una perspectiva optimista ante los desafíos diarios.</p>
-                <p class="font-semibold text-primary">¡Empieza a transformar tu mentalidad hoy mismo!</p>
-            </div>
-        </section>
-
-        <!-- Espacio publicitario: Banner intermedio. -->
-        <section class="ad-section py-10 text-center">
-            <div class="ad-slot bg-gray-200 flex items-center justify-center rounded-lg overflow-hidden w-full md:w-[970px] h-[250px] mx-auto text-sm text-gray-500 shadow-md">
-                <p>Anuncio: Banner Intermedio (970x250)</p>
-                <!-- Aquí se insertaría el código real de Google AdSense -->
-            </div>
-        </section>
-
-        <!-- Sección de Contacto (simulada) -->
-        <section id="contact" class="py-12 text-center bg-white rounded-lg shadow-lg">
-            <h2 class="text-3xl md:text-4xl font-bold text-text mb-8">Contáctanos</h2>
-            <p class="max-w-xl mx-auto text-lg text-gray-700 mb-8">¿Tienes sugerencias para nuevas afirmaciones o comentarios sobre la página? ¡Nos encantaría escucharte!</p>
-            <form class="max-w-md mx-auto space-y-4">
-                <input type="text" placeholder="Tu Nombre" class="w-full p-3 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-                <input type="email" placeholder="Tu Correo Electrónico" class="w-full p-3 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-                <textarea placeholder="Tu Mensaje" rows="5" class="w-full p-3 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"></textarea>
-                <button type="submit" class="bg-primary hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
-                    Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i>
-                </button>
-            </form>
         </section>
 
     </main>
 
-    <!-- Pie de página: Contiene enlaces de información y redes sociales, con espacio publicitario -->
-    <footer class="bg-secondary text-white py-10 px-6 md:px-8 lg:px-10 mt-12">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            <!-- Enlaces de pie de página -->
-            <div class="footer-links flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm">
-                <a href="/privacy" class="hover:text-primary transition duration-300">Política de Privacidad</a>
-                <a href="/terms" class="hover:text-primary transition duration-300">Términos y Condiciones</a>
-                <a href="/faq" class="hover:text-primary transition duration-300">Preguntas Frecuentes</a>
-            </div>
-
-            <!-- Iconos de Redes Sociales -->
-            <div class="social-media flex space-x-4 text-xl">
-                <a href="#" class="hover:text-primary transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="hover:text-primary transition duration-300"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-primary transition duration-300"><i class="fab fa-instagram"></i></a>
-            </div>
-
-            <!-- Espacio publicitario: Banner inferior. Menos intrusivo. -->
-            <div class="ad-slot bg-gray-700 flex items-center justify-center rounded-lg overflow-hidden w-full md:w-[728px] h-[90px] text-sm text-gray-400">
-                <p>Anuncio: Banner Inferior (728x90)</p>
-                <!-- Aquí se insertaría el código real de Google AdSense -->
-            </div>
-        </div>
-        <!-- Información de derechos de autor -->
-        <div class="text-center text-gray-400 text-sm mt-8">
-            <p>&copy; 2025 Tu Dosis Diaria de Inspiración. Todos los derechos reservados.</p>
-        </div>
+    <!-- Pie de página -->
+    <footer class="text-center py-8 mt-12 relative z-10">
+        <p class="text-gray-400 text-sm">&copy; 2025 - Hecho con <i class="fas fa-heart text-[#e94560]"></i> exclusivamente para la mejor novia del mundo.</p>
     </footer>
 
+    <!-- Script para la animación de partículas -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
     <script>
-        // Objeto que contiene afirmaciones categorizadas
-        const affirmationsByCategory = {
-            general: [
-                "Soy capaz de lograr todo lo que me propongo.",
-                "Cada día es una nueva oportunidad para crecer.",
-                "Mi potencial es ilimitado.",
-                "Acepto y amo quién soy.",
-                "La felicidad es una elección, y elijo ser feliz.",
-                "Atraigo abundancia y prosperidad a mi vida.",
-                "Confío en mi intuición y en mis decisiones.",
-                "Estoy rodeado de amor y apoyo.",
-                "Cada desafío me hace más fuerte.",
-                "Merezco todo lo bueno que me sucede.",
-                "Mi mente está llena de pensamientos positivos.",
-                "Estoy agradecido por todas las bendiciones en mi vida.",
-                "Soy una persona valiosa y digna de amor.",
-                "La paz interior es mi estado natural.",
-                "Mis sueños se están manifestando ahora.",
-                "Me perdono a mí mismo y a los demás.",
-                "Soy fuerte, resiliente y valiente.",
-                "La creatividad fluye libremente a través de mí.",
-                "Elijo la alegría y la gratitud.",
-                "Todo lo que necesito ya está dentro de mí."
-            ],
-            confianza: [
-                "Confío plenamente en mis habilidades y fortalezas.",
-                "Soy seguro/a de mí mismo/a y de mis decisiones.",
-                "Mi confianza crece con cada paso que doy.",
-                "Soy digno/a de respeto y admiración.",
-                "Me expreso con claridad y convicción.",
-                "Creo en mi capacidad para superar cualquier obstáculo.",
-                "Mi voz importa y mis opiniones son valiosas.",
-                "Irradio confianza y seguridad.",
-                "Soy valiente y me atrevo a tomar riesgos.",
-                "Mi autoconfianza es inquebrantable."
-            ],
-            bienestar: [
-                "Mi cuerpo es fuerte y saludable.",
-                "Elijo pensamientos que nutren mi bienestar.",
-                "Me permito descansar y recargar energías.",
-                "Estoy en paz conmigo mismo/a y con el mundo.",
-                "Mi mente y mi cuerpo están en armonía.",
-                "Cuido de mí mismo/a con amor y compasión.",
-                "Cada respiración me llena de calma.",
-                "Libero el estrés y la tensión de mi cuerpo.",
-                "Merezco sentirme bien y en plenitud.",
-                "Mi bienestar es mi prioridad."
-            ],
-            exito: [
-                "Soy un imán para el éxito y las oportunidades.",
-                "Cada día me acerco más a mis metas.",
-                "Mis esfuerzos son recompensados con éxito.",
-                "Soy un/a creador/a de mi propia realidad exitosa.",
-                "El éxito es mi derecho de nacimiento.",
-                "Mis ideas son innovadoras y me llevan al éxito.",
-                "Celebro cada uno de mis logros, grandes y pequeños.",
-                "Estoy abierto/a a recibir todas las bendiciones del éxito.",
-                "Mi camino está lleno de oportunidades para prosperar.",
-                "Soy exitoso/a en todo lo que hago."
-            ],
-            amor: [
-                "Soy digno/a de amor y lo recibo en abundancia.",
-                "Mi corazón está abierto al amor incondicional.",
-                "Atraigo relaciones sanas y significativas.",
-                "Me amo y me acepto tal como soy.",
-                "El amor fluye libremente en mi vida.",
-                "Soy un ser de amor y luz.",
-                "Doy y recibo amor con facilidad.",
-                "Mi vida está llena de amor y alegría.",
-                "Me rodeo de personas que me aman y me apoyan.",
-                "El amor es la fuerza más poderosa en mi vida."
-            ]
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- CONFIGURACIÓN DE PARTÍCULAS ---
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#ffffff" },
+                    "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+                    "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                    "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                    "line_linked": { "enable": false },
+                    "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                    "modes": { "bubble": { "distance": 200, "size": 5, "duration": 2, "opacity": 8, "speed": 3 }, "push": { "particles_nb": 4 } }
+                },
+                "retina_detect": true
+            });
 
-        // Elementos del DOM
-        const currentAffirmationElement = document.getElementById('current-affirmation');
-        const generateButton = document.getElementById('generate-affirmation-btn');
-        const copyButton = document.getElementById('copy-affirmation-btn');
-        const categorySelector = document.getElementById('affirmation-category');
-        const customModal = document.getElementById('customModal');
-        const modalMessage = document.getElementById('modalMessage');
-        const modalCloseBtn = document.querySelector('#customModal .custom-modal-close');
+            // --- LÓGICA DE LA APLICACIÓN ---
 
-        // Botones de compartir
-        const shareTwitterBtn = document.getElementById('share-twitter-btn');
-        const shareFacebookBtn = document.getElementById('share-facebook-btn');
-        const shareWhatsappBtn = document.getElementById('share-whatsapp-btn');
+            // Objeto con todas las afirmaciones
+            const affirmationsByCategory = {
+                para_ti: [
+                    "Eres la persona más increíble que he conocido, Kilee.",
+                    "Tu sonrisa tiene el poder de iluminar mi día por completo.",
+                    "Amo cada pequeño detalle que te hace ser tú.",
+                    "Gracias por existir y por hacerme tan feliz.",
+                    "Kilee, eres más fuerte y valiente de lo que imaginas.",
+                    "Estoy tan orgulloso de la persona que eres.",
+                    "Contigo a mi lado, siento que puedo conquistar el mundo.",
+                    "Eres mi lugar seguro y mi aventura favorita, todo en uno.",
+                    "Tu inteligencia y tu corazón son simplemente deslumbrantes.",
+                    "No olvides nunca lo valiosa y maravillosa que eres.",
+                    "Cada día a tu lado es el mejor regalo.",
+                    "Te amo más de lo que las palabras pueden expresar."
+                ],
+                confianza: [
+                    "Confío plenamente en mis habilidades y fortalezas.", "Soy segura de mí misma y de mis decisiones.", "Mi confianza crece con cada paso que doy.", "Soy digna de respeto y admiración.", "Me expreso con claridad y convicción.", "Creo en mi capacidad para superar cualquier obstáculo.",
+                ],
+                bienestar: [
+                    "Mi cuerpo es fuerte y saludable.", "Elijo pensamientos que nutren mi bienestar.", "Me permito descansar y recargar energías.", "Estoy en paz conmigo misma y con el mundo.", "Mi mente y mi cuerpo están en perfecta armonía.",
+                ],
+                exito: [
+                    "Soy un imán para el éxito y las oportunidades.", "Cada día me acerco más a mis metas.", "Mis esfuerzos son recompensados con éxito.", "Estoy abierta a recibir todas las bendiciones del éxito.",
+                ],
+                amor: [
+                    "Soy digna de amor y lo recibo en abundancia.", "Mi corazón está abierto al amor incondicional.", "Atraigo relaciones sanas y significativas.", "Me amo y me acepto tal como soy.",
+                ]
+            };
 
-        // Función para mostrar el modal personalizado
-        function showModal(message) {
-            modalMessage.textContent = message;
-            customModal.style.display = 'flex'; // Muestra el modal
-            // Ocultar modal automáticamente después de 2 segundos
-            setTimeout(() => {
-                hideModal();
-            }, 2000);
-        }
+            // Mapeo de claves a nombres bonitos para el selector
+            const categoryNames = {
+                para_ti: "Para Ti, Mi Amor ❤️",
+                confianza: "Confianza y Poder 💪",
+                bienestar: "Paz y Bienestar 🧘‍♀️",
+                exito: "Éxito y Abundancia ✨",
+                amor: "Amor Propio y Sanación ❤️‍🩹"
+            };
 
-        // Función para ocultar el modal personalizado
-        function hideModal() {
-            customModal.style.display = 'none'; // Oculta el modal
-        }
-
-        // Event listeners para el modal
-        modalCloseBtn.addEventListener('click', hideModal);
-        window.addEventListener('click', (event) => {
-            if (event.target === customModal) {
-                hideModal();
-            }
-        });
-
-        // Función para generar y mostrar una nueva afirmación
-        function generateNewAffirmation() {
-            const selectedCategory = categorySelector.value;
-            const affirmationsForCategory = affirmationsByCategory[selectedCategory];
-            const randomIndex = Math.floor(Math.random() * affirmationsForCategory.length);
+            // Elementos del DOM
+            const affirmationElement = document.getElementById('current-affirmation');
+            const generateBtn = document.getElementById('generate-affirmation-btn');
+            const copyBtn = document.getElementById('copy-affirmation-btn');
+            const categorySelector = document.getElementById('affirmation-category');
+            const customModal = document.getElementById('customModal');
+            const modalMessage = document.getElementById('modalMessage');
             
-            // Aplicar clase de animación antes de cambiar el texto
-            currentAffirmationElement.classList.remove('fade-in');
-            void currentAffirmationElement.offsetWidth; // Truco para reiniciar la animación
-            currentAffirmationElement.textContent = `"${affirmationsForCategory[randomIndex]}"`;
-            currentAffirmationElement.classList.add('fade-in');
-        }
+            const shareWhatsappBtn = document.getElementById('share-whatsapp-btn');
+            // CAMBIO: Se selecciona el botón de Instagram
+            const shareInstagramBtn = document.getElementById('share-instagram-btn');
 
-        // Event listener para el botón "Generar Nueva Afirmación"
-        generateButton.addEventListener('click', generateNewAffirmation);
+            // --- FUNCIONES ---
 
-        // Event listener para el selector de categoría
-        categorySelector.addEventListener('change', generateNewAffirmation);
-
-        // Event listener para el botón "Copiar Afirmación"
-        copyButton.addEventListener('click', () => {
-            const textToCopy = currentAffirmationElement.textContent.replace(/"/g, ''); // Eliminar comillas
-            
-            // Usar document.execCommand('copy') por restricciones de iFrame
-            const tempInput = document.createElement('input');
-            tempInput.value = textToCopy;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            try {
-                document.execCommand('copy');
-                showModal('¡Afirmación copiada al portapapeles!');
-            } catch (err) {
-                showModal('Error al copiar. Por favor, copia manualmente: ' + textToCopy);
+            function populateCategories() {
+                const categoryOrder = ['para_ti', 'confianza', 'bienestar', 'exito', 'amor'];
+                for (const key of categoryOrder) {
+                    if (affirmationsByCategory[key]) {
+                        const option = document.createElement('option');
+                        option.value = key;
+                        option.textContent = categoryNames[key] || key;
+                        categorySelector.appendChild(option);
+                    }
+                }
             }
-            document.body.removeChild(tempInput);
+
+            function showModal(message) {
+                modalMessage.textContent = message;
+                customModal.style.display = 'flex';
+                setTimeout(() => {
+                    hideModal();
+                }, 2500); // Un poco más de tiempo para leer el mensaje de Instagram
+            }
+
+            function hideModal() {
+                customModal.style.display = 'none';
+            }
+
+            function generateNewAffirmation() {
+                const selectedCategory = categorySelector.value;
+                const affirmations = affirmationsByCategory[selectedCategory];
+                const randomIndex = Math.floor(Math.random() * affirmations.length);
+                const newAffirmation = affirmations[randomIndex];
+
+                affirmationElement.classList.remove('fade-in-up');
+                void affirmationElement.offsetWidth;
+                affirmationElement.textContent = `"${newAffirmation}"`;
+                affirmationElement.classList.add('fade-in-up');
+            }
+
+            // CAMBIO: La función ahora acepta un mensaje personalizado para el modal
+            function copyToClipboard(message = '¡Mensaje copiado! ❤️') {
+                const textToCopy = affirmationElement.textContent.replace(/"/g, '');
+                const tempInput = document.createElement('textarea');
+                tempInput.value = textToCopy;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                try {
+                    document.execCommand('copy');
+                    showModal(message);
+                } catch (err) {
+                    showModal('Error al copiar. Intenta de nuevo.');
+                }
+                document.body.removeChild(tempInput);
+            }
+            
+            // CAMBIO: La función ahora maneja Instagram
+            function shareOn(platform) {
+                const text = affirmationElement.textContent.replace(/"/g, '');
+                const encodedText = encodeURIComponent(text + " ✨");
+                
+                if (platform === 'whatsapp') {
+                    const url = `https://api.whatsapp.com/send?text=${encodedText}`;
+                    window.open(url, '_blank');
+                } else if (platform === 'instagram') {
+                    // Instagram no permite compartir texto directamente.
+                    // Así que copiamos el texto y le mostramos una instrucción.
+                    copyToClipboard('Mensaje copiado. ¡Ahora pégalo en tu publicación de Instagram!');
+                }
+            }
+
+            // --- EVENT LISTENERS ---
+            
+            generateBtn.addEventListener('click', generateNewAffirmation);
+            categorySelector.addEventListener('change', generateNewAffirmation);
+            // CAMBIO: El botón de copiar ahora llama a la función sin argumentos
+            copyBtn.addEventListener('click', () => copyToClipboard());
+            
+            shareWhatsappBtn.addEventListener('click', () => shareOn('whatsapp'));
+            // CAMBIO: El listener ahora es para el botón de Instagram
+            shareInstagramBtn.addEventListener('click', () => shareOn('instagram'));
+
+            window.addEventListener('click', (event) => {
+                if (event.target === customModal) {
+                    hideModal();
+                }
+            });
+
+            // --- INICIALIZACIÓN ---
+            populateCategories();
+            generateNewAffirmation();
         });
-
-        // Funciones para compartir en redes sociales
-        function shareOnTwitter() {
-            const affirmationText = currentAffirmationElement.textContent.replace(/"/g, '');
-            const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(affirmationText + " #AfirmacionPositiva #InspiracionDiaria")}`;
-            window.open(tweetUrl, '_blank');
-        }
-
-        function shareOnFacebook() {
-            const affirmationText = currentAffirmationElement.textContent.replace(/"/g, '');
-            // Facebook Share Dialog URL (requires app ID for full functionality, this is a basic share)
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(affirmationText + " #AfirmacionPositiva")}&hashtag=%23InspiracionDiaria`;
-            window.open(facebookUrl, '_blank');
-        }
-
-        function shareOnWhatsapp() {
-            const affirmationText = currentAffirmationElement.textContent.replace(/"/g, '');
-            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(affirmationText + " #AfirmacionPositiva #InspiracionDiaria")}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        // Event listeners para los botones de compartir
-        shareTwitterBtn.addEventListener('click', shareOnTwitter);
-        shareFacebookBtn.addEventListener('click', shareOnFacebook);
-        shareWhatsappBtn.addEventListener('click', shareOnWhatsapp);
-
-        // Generar una afirmación inicial al cargar la página
-        document.addEventListener('DOMContentLoaded', generateNewAffirmation);
-
-        // Lógica para un pop-up discreto (ejemplo: suscripción a newsletter o característica premium)
-        // Esto es un ejemplo simple; en un entorno real se usarían cookies para no mostrarlo repetidamente.
-        setTimeout(() => {
-            // showModal('¡Recibe tu dosis diaria de inspiración en tu correo! Suscríbete a nuestra newsletter.');
-            // Aquí podrías activar un pop-up de AdSense o un formulario de suscripción.
-        }, 15000); // Aparece después de 15 segundos
     </script>
 </body>
 </html>
